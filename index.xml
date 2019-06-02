@@ -7,9 +7,518 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Khaleel Khan &amp;copy; {year}; </copyright>
+    <lastBuildDate>Wed, 26 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="https://khaleelkhan.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Khaleel&#39;s Master Thesis</title>
+      <link>https://khaleelkhan.com/project/khaleels-master-thesis/</link>
+      <pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://khaleelkhan.com/project/khaleels-master-thesis/</guid>
+      <description>&lt;p&gt;This thesis details the design and implementation of a digitally controllable sine wave oscillator which
+can generate frequencies in the range of 0.7 to 2.7 GHz with an output power of -20 dBm across 50
+Ω load. The design and layout was done in the Cadence Virtuoso design environment using the 0.13
+μ m BiCMOS SG13GS technology from IHP.&lt;/p&gt;
+
+&lt;p&gt;The Oscillator consists of 2 stages: Digital ring oscillator and an Output buffer. The design is based on harmonic boost technique which uses lower frequency
+digitally controllable ring oscillator to generate square waves and combine in the output buffer. This
+technique avoids the use of large capacitors or inductors, thus reducing the required chip area, which is
+important as this oscillator is intended to be used as part of analog built in self test.&lt;/p&gt;
+
+&lt;p&gt;The final oscillator is designed to have high spectral purity that is, the second and third harmonics are
+less than -30 dBc even in the worst case. Phase noise of this oscillator is -99.07 dBc/Hz measured at 1
+MHz offset from the highest frequency. The range of frequencies are 631.8 MHz to 2.75 GHz with an
+output power of -20.06 to 21.07 dBm. The system consumes a maximum of 40.71 mW and can be
+turned off when not in use, it consumes maximum 2 nW of power in this state. Layout is created for
+the final design and is found to occupy a total area of 119 x 136 μm 2 . The system is simulated at all
+digital control settings and across PVT corners to verify its robustness. All simulations are based on
+post layout extraction.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Microprocessor Design in Verilog</title>
+      <link>https://khaleelkhan.com/project/microprocessor-design-in-verilog/</link>
+      <pubDate>Thu, 27 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://khaleelkhan.com/project/microprocessor-design-in-verilog/</guid>
+      <description>
+
+&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+
+&lt;p&gt;The purpose of this lab is to implement a THUMB processor with multiple pipeline stages that executes the given C-programs assembled for the ARM THUMB instruction set in Verilog.Appropriate attention is taken to reduce the clock cycles for lower instruction latency.The features of this processor are 5 stage pipeline,hazard detection and data
+forwarding.The processor is designed such a way that the CPU runs at a
+maximum frequency of 2.857 GHz.&lt;/p&gt;
+
+&lt;h2 id=&#34;project-summary&#34;&gt;Project Summary&lt;/h2&gt;
+
+&lt;p&gt;Major milestones defined as per the project have been completed.
+Following table gives a short summary of our design and goals achieved.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Feature&lt;/strong&gt;            &lt;strong&gt;Value/Result&lt;/strong&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Number of Stages       5
+  Synthesizable          Yes
+  Max Frequency          2.857 GHz
+  Power                  2.0583 mW
+  Can process count32    Yes
+  Can process memcpy46   Yes&lt;/p&gt;
+
+&lt;h1 id=&#34;implementation&#34;&gt;Implementation&lt;/h1&gt;
+
+&lt;h2 id=&#34;design&#34;&gt;Design&lt;/h2&gt;
+
+&lt;p&gt;For the simulation of CPU program, the given data files which contains
+the instructions were read into the instruction register of the CPU.The
+processor designed is a 5 stage pipeline design . The stages are
+Instruction Fetch, Instruction decode,Execute,Memory Access and Write
+back.&lt;/p&gt;
+
+&lt;p&gt;The instruction fetch stage is where a program counter will pull the
+next instruction from the current location in to the program memory. In
+addition the program counter was updated with either the next
+instruction location sequentially or the instruction location as
+determined by a branch.&lt;/p&gt;
+
+&lt;p&gt;The instruction decode stage the control unit determines the values for
+the control lines that must be set to process the instruction. The
+decoded register addresses are sent to the register file and the data in
+the resister is passed to the ALU inputs.&lt;/p&gt;
+
+&lt;p&gt;The opcode that is been fetched is sent to the ALU for execution.If
+required,branch addresses are also calculated and the forwarding unit
+determines whether the output of the ALU or the memory unit should be
+forwarded to the ALU inputs.For this purpose a 2:1 Multiplexer is used.&lt;/p&gt;
+
+&lt;p&gt;In the Write back stage, calculated values are written back to the
+specific registers or memory.&lt;/p&gt;
+
+&lt;p&gt;The CPU also contains a hazard detection block to determine when a stall
+cycle must be added.This is enabled when the output of a previous load
+instruction is required for the current execution.The hazard detection
+block will also prohibit the program counter from updating it’s next
+calculated value.&lt;/p&gt;
+
+&lt;p&gt;Forwarding unit monitors the output of ALU and system memory and
+determines whether this value has to be given as a ALU input.If the
+recently calculated value is needed in the current execution before it
+is written to the register file it will be sent to the appropriate ALU
+input.&lt;/p&gt;
+
+
+
+
+&lt;figure&gt;
+
+&lt;img src=&#34;Images/Figure5.png&#34; /&gt;
+
+
+
+&lt;figcaption data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  &lt;h4&gt;Source: &lt;span&gt;[@CDACpipe]&lt;/span&gt;&lt;/h4&gt;
+  
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;functional-description&#34;&gt;Functional Description&lt;/h2&gt;
+
+&lt;h5 id=&#34;pipeline&#34;&gt;Pipeline&lt;/h5&gt;
+
+&lt;p&gt;The Pipelined model is an architecture which allows throughput of the
+processor to be increased dramatically by reusing the idle stages during
+processing of instructions.All the stages of a pipeline are executed in
+parallel with Registers inserted between the stages. This enables
+several operations to take place simultaneously, and the processing and
+memory systems to operate continuously[@TDMI_DS].The stages in the
+pipeline are instruction fetch, decode, execute and writeback.&lt;/p&gt;
+
+&lt;h3 id=&#34;instruction-fetch-stage&#34;&gt;Instruction Fetch Stage&lt;/h3&gt;
+
+&lt;p&gt;The instruction fetch stage is responsible for reading the instruction
+memory and sending the next instruction to the next stage in pipeline,or
+a stall if a branch has been detected in order to avoid incorrect
+execution. It consist of three components : instruction memory, program
+counter.&lt;/p&gt;
+
+&lt;h4 id=&#34;program-counter&#34;&gt;Program Counter&lt;/h4&gt;
+
+&lt;p&gt;The program counter is incremented by 2 after every instruction is
+executed. In cases where a jump is required the PC is modified directly
+by the output of ALU via a multiplexer.&lt;/p&gt;
+
+&lt;h3 id=&#34;instruction-decode-stage&#34;&gt;Instruction Decode Stage&lt;/h3&gt;
+
+&lt;p&gt;In decode stage the fetched instruction is decoded and it is responsible
+for assigning the different sections of instructions into their proper
+representation based on different instruction types.The decode stage
+consist of control unit, the hazard detection unit , the sign extender
+and the register file, and is responsible for connecting all these
+components together. It splits the instruction into various parts and
+feeds them into the corresponding components.Registers Rn and Rm are fed
+to the register file, the immediate data is fed to the sign extender,
+and the ALU opcodes and the function codes are sent to the control unit.
+The output of these corresponding components are clocked and then stored
+for next stage.The codes used in the decode section are listed in the
+table.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;Opcode&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;Instruction or instruction class&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;00xxxx&lt;/td&gt;
+&lt;td&gt;Shift (immediate), add, subtract, move, and compare&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;010000&lt;/td&gt;
+&lt;td&gt;Data-processing&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;010001&lt;/td&gt;
+&lt;td&gt;Special data instructions and branch and exchange&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;01001x&lt;/td&gt;
+&lt;td&gt;Load from Literal Pool, see LDR (literal)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;0101xx&lt;/td&gt;
+&lt;td&gt;Load/store single data item&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;10100x&lt;/td&gt;
+&lt;td&gt;Generate PC-relative address&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;10101x&lt;/td&gt;
+&lt;td&gt;Generate SP-relative address, see ADD (SP plus immediate)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;1011xx&lt;/td&gt;
+&lt;td&gt;Miscellaneous 16-bit instructions&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;1101xx&lt;/td&gt;
+&lt;td&gt;Conditional branch, and Supervisor Call&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;11100x&lt;/td&gt;
+&lt;td&gt;Unconditional Branch&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;: Source: &lt;span&gt;[@arm_manual]&lt;/span&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;control-unit&#34;&gt;Control Unit&lt;/h3&gt;
+
+&lt;p&gt;Control is the hardware that tells the datapath what to do, in terms of
+switching, operation selection, data movement between ALU components
+[@Patterson].It takes the given opcode from the instruction and
+translate into individual instruction control lines needed for the
+remaining stages.All control signals can be set based on the opcode
+bits.&lt;/p&gt;
+
+&lt;h3 id=&#34;hazard-detection-and-forwarding-unit&#34;&gt;Hazard Detection and Forwarding Unit&lt;/h3&gt;
+
+&lt;p&gt;Hazard occurs when we read a value that was just written from memory,as
+the value wont be available for execution until the end of the memory
+stage. It introduces stall cycle by replacing control lines with zero
+and disabling the program counter from updating. When a branch is
+detected the hazard detection unit will allow the program counter to
+write, but will feed it the branch address instead of the next counted
+value.&lt;/p&gt;
+
+&lt;p&gt;The forwarding unit is responsible for choosing what input is to be fed
+into the ALU.It takes the input from the decode stage ,the value that
+the ALU has fed to the write back stage as well as the register numbers
+corresponding to all of these and determines if there is any conflict
+exist.It will decide which of this values must be send to ALU.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;Images/examle_of_hazard.jpg&#34; alt=&#34;Source:
+&amp;lt;span&amp;gt;[@Patterson]&amp;lt;/span&amp;gt;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;Images/example_of_stall_insertion.jpg&#34; alt=&#34;Source:
+&amp;lt;span&amp;gt;[@Patterson]&amp;lt;/span&amp;gt;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;sign-extender-and-shifter&#34;&gt;Sign Extender and Shifter&lt;/h3&gt;
+
+&lt;p&gt;The sign extender takes the immediate value and sign extends it if the
+current instruction is signed operation. It also has a shifted output
+for branch address calculation.&lt;/p&gt;
+
+&lt;h3 id=&#34;register-file&#34;&gt;Register File&lt;/h3&gt;
+
+&lt;p&gt;The data storage in the CPU is the register bank contained within the
+Instruction decode stage. This bank of registers is directly referenced
+from the ARM Thumb instructions and is designed to allow to access the
+data and avoid the use of much slower data memory.The registers are
+defined as being written in the negative edge of the clock and read in
+the positive edge.This is done to avoid hazards when one instruction is
+attempting to write to the register bank while the other is reading.&lt;/p&gt;
+
+&lt;h3 id=&#34;execute-stage&#34;&gt;Execute Stage&lt;/h3&gt;
+
+&lt;p&gt;The execute stage is responsible for performing the specified
+operations.The execute stage consist of ALU , branch determiner and the
+forwarding unit. It connects these components together so that the ALU
+processes the data properly given inputs chosen by the forwarding unit
+and will notify the decode stage if a branch is indeed to be taken.&lt;/p&gt;
+
+&lt;h5 id=&#34;alu&#34;&gt;ALU&lt;/h5&gt;
+
+&lt;p&gt;The ALU is responsible for performing the actual calculation specified
+by the instruction. It takes two 16 bit inputs and opcode from the
+decode block and gives a single 16 bit output along with the Program
+status registers.&lt;/p&gt;
+
+&lt;h5 id=&#34;branch-determiner&#34;&gt;Branch Determiner&lt;/h5&gt;
+
+&lt;p&gt;The Branch determiner is responsible for looking at the output of ALU ,
+and the type of instruction it is decoding and determining whether the
+system is to branch or not.&lt;/p&gt;
+
+&lt;p&gt;For example in case of BLE (Branch if less than or equal) branch must be
+taken when if flags Z set, or N set and V clear, or N clear and V
+set.[@TDMI_DS]&lt;/p&gt;
+
+&lt;p&gt;Implementation of forwarding block is shown in Figure.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;Images/forwarding.jpg&#34; alt=&#34;Source:
+&amp;lt;span&amp;gt;[@Patterson]&amp;lt;/span&amp;gt;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;writeback-stage&#34;&gt;Writeback Stage&lt;/h3&gt;
+
+&lt;p&gt;The write back stage is responsible for writing the calculated value
+back to the proper register.It has input control lines that tells
+whether the instruction writes back the output of ALU to memory or not.&lt;/p&gt;
+
+&lt;h3 id=&#34;push-and-pop-instruction&#34;&gt;Push and Pop Instruction&lt;/h3&gt;
+
+&lt;p&gt;Pushing to stack and Popping data back from stack to registers is
+implemented as a FSM shown in the following Figure.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;Images/fsm.pdf&#34; alt=&#34;FSM for Push and Pop instructions&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;rtl-verification&#34;&gt;RTL verification&lt;/h2&gt;
+
+&lt;p&gt;Test benches are used to simulate design without the need of any
+physical hardware. The biggest benefit of this is that it inspects every
+signal that is in the design. The overall CPU block is responsible for
+tying all of the stages together as well as providing the access to the
+outside world that the test bench uses to load instruction memory and
+monitor the register bank for test verification.&lt;br /&gt;
+The test bench for the CPU involved two different sections in order to
+allow the testing of the CPU block as shown in Figure [fig:testbench].
+The first section that was part of the test bench was the code that was
+responsible for loading the instruction memory within the CPU.This
+memory is what would run the instructions through the pipeline once the
+CPU was allowed to start. The instructions that were loaded included
+register based and immediate adds, subtracts (both signed and unsigned),
+reading and writing data memory, and a loop that would force the CPU to
+jump back to the start of instruction memory and execute those same
+instructions again[@MIPS_paper]. The different adds were important
+because each exercised different parts of the CPU including the data
+forwarding unit, multiple registers and different functions within the
+ALU itself.The jump instruction is important and also in that it
+exercised the branch detection unit, hazard detection unit as well as
+the ability of the instruction fetch stage to be able to jump to an
+address and continue execution with only the input of a single stall
+cycle.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;Images/testbench-crop.pdf&#34; alt=&#34;RTL Verification Block diagram&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;synthesis&#34;&gt;Synthesis&lt;/h2&gt;
+
+&lt;p&gt;A synthesis tool takes an RTL hardware description and standard cell
+library as input and produces a gate level netlist as output[@iitkgp].
+The resulting gate level list is completely a structural description
+with standard cells of the design.It is not necessary that the Verilog
+is functionally correct ,it must be written in such a way that it
+directs the synthesis tool to generate good hardware. Verilog are tied
+to particular clock cycles. The synthesized netlist exhibits the same
+clock-by-clock cycle behavior, allowing the RTL testbench to be easily
+re-used for gate-level simulation. Design Vision was used for
+synthesizing our designed processor.&lt;/p&gt;
+
+&lt;h1 id=&#34;unpipelined-processor&#34;&gt;Unpipelined Processor&lt;/h1&gt;
+
+&lt;p&gt;The motive for multi cycle implementation for THUMB processor is to
+improve the performance of Single cycle Thumb processor which executes
+all instructions in 1 cycle. The main problem in Single cycle processor
+is, as all instructions are executed concurrently in one cycle, the
+components cannot be used more than once in a cycle. To make this design
+more efficient, sharing of the component can be made possible by making
+it have multiple input and outputs selected by a multiplexer.The control
+signals for such multiplexers are decided using the finite state
+machine. The individual components are connected as per the figure.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;Images/unpipelined_blk_diagram.png&#34; alt=&#34;Unpipelined block diagram&amp;lt;span
+data-label=&amp;quot;fig:unpipe&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;evaluation&#34;&gt;Evaluation&lt;/h1&gt;
+
+&lt;p&gt;The comparison of the obtained specifications are listed in Table
+below. Features like power, Maximum operating frequency and
+processing time is better in un pipelined architecture compared to
+pipelined architecture. However the processing time is the basis for
+performance and throughput .An interesting aspect about the processing
+time achieved in pipelined and un pipelined stages is the that, though 5
+stage pipeline is used the execution time or the performance has not
+increased 5 folds as expected. This is the result of adding stalls in
+Hazard block. Hence the measure of performance is not just dependent on
+the number of pipelined stages but also the type of instructions
+executed and the frequency at which stalls are inserted in the data
+path.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;Feature&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;Pipelined&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;Un-Pipelined&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Area&lt;/td&gt;
+&lt;td&gt;3783.4 units&lt;/td&gt;
+&lt;td&gt;8649 units&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Power&lt;/td&gt;
+&lt;td&gt;2.0583 mW&lt;/td&gt;
+&lt;td&gt;2.1109 mW&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Critical time&lt;/td&gt;
+&lt;td&gt;.35 nS&lt;/td&gt;
+&lt;td&gt;.25 nS&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Maximum Frequency&lt;/td&gt;
+&lt;td&gt;2.857 GHZ&lt;/td&gt;
+&lt;td&gt;4 GHz&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Execution time&lt;/td&gt;
+&lt;td&gt;2184956 pS&lt;/td&gt;
+&lt;td&gt;337300 pS&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Comparison of Pipelined and Unpipelined&lt;/p&gt;
+
+&lt;p&gt;Following Timing report is obtained for a Clock period of 0.35 nS.
+&amp;ldquo;$$\therefore  Max_Frequency = \frac{1}{0.35 nS} = 2.86 GHz&amp;rdquo; .&lt;/p&gt;
+
+&lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
+
+&lt;p&gt;As a result of this work,Thumb processor with pipelined stages is
+implemented using Verilog Hardware description language and a throughput
+better than Unpipelined architecture is achieved.The design is
+synthesize-able and achieves the required goals of the project.&lt;/p&gt;
+
+&lt;h2 id=&#34;future-work&#34;&gt;Future work&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;The processor performance can optimized by inserting stalls
+intelligently .&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Dynamic Branch prediction algorithm can be implemented inside the
+processor&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Gate level simulation needs further debugging&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;referrences&#34;&gt;Referrences&lt;/h1&gt;
+
+&lt;p&gt;This appendix documents the software tools used for this project.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;Tool&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;Version&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ModelSim&lt;/td&gt;
+&lt;td&gt;SE-64 10.3d&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Synopsis Design Vision&lt;/td&gt;
+&lt;td&gt;2013.12-SP5-3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;The Thumb instruction set,&lt;br /&gt;
+&lt;em&gt;&lt;a href=&#34;http://apt.cs.manchester.ac.uk/ftp/pub/apt/peve/PEVE05/Slides/05_Thumb.pdf&#34; target=&#34;_blank&#34;&gt;http://apt.cs.manchester.ac.uk/ftp/pub/apt/peve/PEVE05/Slides/05_Thumb.pdf&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Pipelined Processor Design,04/25/07, Luke Harvey and Stephanie
+Spielbauer&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Addison Wesley - &lt;em&gt;ARM System-on-Chip Architecture&lt;/em&gt;, 2Ed.pdf. .&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Organization of Computer Systems: Pipelining. [Online]. Available:
+&lt;em&gt;&lt;a href=&#34;https://www.cise.ufl.edu/ mssz/CompOrg/CDA-pipe.html&#34; target=&#34;_blank&#34;&gt;https://www.cise.ufl.edu/ mssz/CompOrg/CDA-pipe.html&lt;/a&gt;&lt;/em&gt;. [Accessed:
+02-Aug-2017].&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Organization of Computer Systems: Processor &amp;amp; Datapath.
+[Online]. Available:
+&lt;em&gt;&lt;a href=&#34;https://www.cise.ufl.edu/ mssz/CompOrg/CDA-proc.html&#34; target=&#34;_blank&#34;&gt;https://www.cise.ufl.edu/ mssz/CompOrg/CDA-proc.html&lt;/a&gt;&lt;/em&gt;. [Accessed:
+01-Aug-2017].&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ARM Architecture Reference Manual ARMv7-A and ARMv7-R edition Errata
+markup Copyright 1996-1998, 2000, 2004-2011 ARM Limited.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ARM7TDMI Data Sheet Copyright ARM Limited.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Patterson, D.A. and J.L. Hennesey. Computer Organization and Design: The
+Hardware/Software Interface, Second Edition, San Francisco, CA: Morgan
+Kaufman (1998).&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Vhdl Implementation of A Mips-32 Pipeline Processor, Kirat Pal Singh,
+Shivani Parmar&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;IIT Lab tutorial
+&lt;a href=&#34;http://www.facweb.iitkgp.ernet.in/ isg/TESTING/SLIDES/Tutorial2b.pdf&#34; target=&#34;_blank&#34;&gt;http://www.facweb.iitkgp.ernet.in/ isg/TESTING/SLIDES/Tutorial2b.pdf&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
   </channel>
 </rss>
