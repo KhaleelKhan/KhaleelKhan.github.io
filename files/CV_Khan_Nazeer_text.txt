@@ -1,0 +1,77 @@
+Education
+=========
+
+2016–2018 Masters in Information and Communication Engineering,
+Technische Universität Darmstadt, Darmstadt, Germany.
+GPA: 1.78
+
+2009–2013 Bachelor of Engineering in Electronics and Communication,
+Visvesvaraya Technological University, Belgaum, India.
+GPA : 2.1
+
+Experience
+==========
+
+Mar 2018 – Sep 2018
+Master Thesis at TU Darmstadt,
+ Integrierte Elektronische Systeme (IES) – TU Darmstadt.
+Project Title: "Design and analysis of a 0.7 to 2.3 GHz adjustable, high spectral purity CMOS oscillator"
+-  Tools used: MATLAB, Cadence Virtuoso
+
+Jun 2017 – May 2018
+Studentische Hilfskraft - Embedded Systems (Hardware),
+ G.i.N. GmbH, Darmstadt.
+-  Build and test embedded hardware prototypes.
+-  Performing tests on newly developed circuits.
+-  Developing new production test environment on python.
+
+Dec 2016 – Mar 2017
+Student Research Assistant,
+ Signal Processing Group (SPG) – TU Darmstadt.
+Project Title: "Implementing Machine Learning Algorithms And Statistical Features For Sports Analytics"
+-  Programming language used: Python
+-  Extract Features from real world data recorded from 3D accelerometer, 3D gyroscope and attitude (orientation) measurements
+-  Apply Feature selection and Machine learning algorithms to the extracted features
+-  Train Supervised Machine learning model using recorded data
+-  Predict the Sport score and compare with human scorer
+
+1 May 2014 – Sep 2016
+Post Silicon Validation Engineer,
+ Tessolve Semiconductors private limited, Bangalore (India).
+Worked as a contractor for Texas Instruments, India
+
+- Specialize in Bench Characterization / Evaluation
+- Test and Characterization of High speed analog devices (ADC)
+- Characterize device performance and prepare characterization report
+- Write and debug test programs for device characterization
+- Analyze test data to understand the cause of device failures, and define solutions. Identify and resolve
+- device performance issues promptly
+- Generating Data sheet Specifications and Plots
+- Development of test environment for each device
+	- Understand device specifications and plan tests
+	- Design circuit necessary for bring up of test device
+	- Test fresh PCBs and plan modifications if necessary
+- Co-ordinate with ATE Engineers to ensure valid test and characterization
+- Develop new techniques to streamline characterization process
+
+Miscellaneous
+=============
+Apr 2017 – July 2017
+Advanced Integrated Circuit Design Lab,
+ Integrated Electronic Systems – TU Darmstadt.
+Achieved score of 1.0
+
+- Design a 3-bit DAC using MOSFET 90nm technology
+- Implement the circuit and simulate in Cadence Virtuoso
+- Design layout for the circuit.
+- Gain knowledge of Analog and Mixed signal design flow.
+
+Aug 2017 Hardware Description language (HDL) Lab,
+ Integrated Electronic Systems – TU Darmstadt.
+Achieved score of 1.7
+-  Use Verilog to model a 5 stage pipelined processor that is defined on ARM Thumb instruction set level.
+-  Go through the digital design process encompassing specification, register-transfer-level modeling, simulation/verification, synthesis and gate-level simulation.
+-  Evaluate the system’s performance and resolve bottlenecks.
+-  Practice group work, documentation and presentation techniques.
+-  Apply course knowledge and use industry-grade tools, particularly: Modelsim (Mentor Graphics) and
+Design Compiler (Synopsys)
