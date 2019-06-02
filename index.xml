@@ -7,10 +7,155 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Khaleel Khan &amp;copy; {year}; </copyright>
-    <lastBuildDate>Wed, 26 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 26 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	    <atom:link href="https://khaleelkhan.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Game of Cows and Bulls</title>
+      <link>https://khaleelkhan.com/project/cows-and-bulls/</link>
+      <pubDate>Fri, 26 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://khaleelkhan.com/project/cows-and-bulls/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Bulls_and_Cows&#34; target=&#34;_blank&#34;&gt;Cows and Bulls&lt;/a&gt; is a code breaker game where the player has to guess a 4 digit code. In this case I have 4 letter words, this makes playing for humans much more than random guessing and some strategy is required. I have switched cows and bulls compared to wiki definition, but concept remains same.&lt;/p&gt;
+
+&lt;h1 id=&#34;gui&#34;&gt;GUI&lt;/h1&gt;
+
+&lt;h2 id=&#34;solver&#34;&gt;Solver&lt;/h2&gt;
+
+&lt;p&gt;In this tab the human is the game host, he holds the secret 4 letter word while the computer guesses. User has to provide how many cows and bulls the guess has.&lt;/p&gt;
+
+
+
+
+&lt;figure&gt;
+
+&lt;img src=&#34;images/cnb_solver.png&#34; /&gt;
+
+
+
+&lt;figcaption data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  &lt;h4&gt;Cows and Bulls Solver&lt;/h4&gt;
+  
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;Ofcourse, a computer crunching numbers is rather uninteresting, so I have a Data page to track how the program is pruning number of availabe guesses. The guesser had two algorithms, Simple and Advanced:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Simple - The next guess is naively selected without any preprocessing. This is fast in processing each step but might take longer.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Advanced - The next guess here is selected such that it reduces the remaining choices. Each current valid guess is evaluated and scored according to the number of choices it can eliminate. Best scoring guess if put forward to the user.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+
+&lt;figure&gt;
+
+&lt;img src=&#34;images/cnb_graph.png&#34; /&gt;
+
+
+
+&lt;figcaption data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  &lt;h4&gt;Cows and Bulls Graph&lt;/h4&gt;
+  
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;English language has around 2000 valid 4 letter words, each guess more than halves the avalanle choices. I notices the program take at max 7 tries regardless of the complexity.&lt;/p&gt;
+
+&lt;h2 id=&#34;game&#34;&gt;Game&lt;/h2&gt;
+
+&lt;p&gt;In this mode the system is the host and user has to guess the code. The programs provides number of cows and bulls for each guess. All previous guess and corresponding scores are printed for reference.&lt;/p&gt;
+
+
+
+
+&lt;figure&gt;
+
+&lt;img src=&#34;images/cnb_game.png&#34; /&gt;
+
+
+
+&lt;figcaption data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  &lt;h4&gt;Cows and Bulls Game&lt;/h4&gt;
+  
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+
+
+
+&lt;figure&gt;
+
+&lt;img src=&#34;images/cnb_succes.png&#34; /&gt;
+
+
+
+&lt;figcaption data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  &lt;h4&gt;Game Solved!&lt;/h4&gt;
+  
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;h1 id=&#34;code&#34;&gt;Code&lt;/h1&gt;
+
+&lt;p&gt;Core of the processor is this calcuator. This takes a guess and a chosen code and generates number of cows and bulls.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def score_calc(self, guess, chosen):
+	bulls = cows = 0
+	for g, c in zip(guess, chosen):
+		if g == c:
+			cows += 1
+		elif g in chosen:
+			bulls += 1
+	return cows, bulls
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Thus any code that does not match either cows or bulls is eliminated from the dictionary of choices. Now the question is selecting the chosen code, this depends on the strategy we want to employ.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;self.choices = [c for c in self.choices if self.score_calc(c, self.ans) == score]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;simple-strategy&#34;&gt;Simple Strategy&lt;/h2&gt;
+
+&lt;p&gt;In the simple strategy the chosen code is simply the top most item after elimination. Then repeat till a score of 4 cows is generated and voila! that is the correct guess.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;if self.strategyComboBox.currentIndex() == 0 :
+	return self.choices[0]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;advanced-strategy&#34;&gt;Advanced Strategy&lt;/h2&gt;
+
+&lt;p&gt;In advanced strategy instead of selecting the top item, each item is assumed to be the chosen code and evaluated by eliminating the non matchnig codes. This is similar to simple strategy, however this is repeated for all item and the item which produces the smallest eliminated list is chosen for next guess.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;if self.strategyComboBox.currentIndex() == 1 :
+	max_unique = 0
+	max_g = &amp;quot;&amp;quot;
+	for g in self.choices:
+		results_list = []
+		for c in self.choices:
+			(cows,bulls) = self.score_calc(g,c)
+			results_list.append(str(cows) + str(bulls))
+			if len(set(results_list)) &amp;lt; len(results_list):
+				break
+		if len(set(results_list)) == len(results_list):
+			return  g
+		elif len(set(results_list)) &amp;gt; max_unique:
+			max_unique  = len(set(results_list))
+			max_g = g
+	return max_g
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Khaleel&#39;s Master Thesis</title>
@@ -60,16 +205,46 @@ maximum frequency of 2.857 GHz.&lt;/p&gt;
 &lt;p&gt;Major milestones defined as per the project have been completed.
 Following table gives a short summary of our design and goals achieved.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Feature&lt;/strong&gt;            &lt;strong&gt;Value/Result&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;Feature&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;Value/Result&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
 
-&lt;hr /&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Number of Stages&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;/tr&gt;
 
-&lt;p&gt;Number of Stages       5
-  Synthesizable          Yes
-  Max Frequency          2.857 GHz
-  Power                  2.0583 mW
-  Can process count32    Yes
-  Can process memcpy46   Yes&lt;/p&gt;
+&lt;tr&gt;
+&lt;td&gt;Synthesizable&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Max Frequency&lt;/td&gt;
+&lt;td&gt;2.857 GHz&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Power&lt;/td&gt;
+&lt;td&gt;2.0583 mW&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Can process count32&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Can process memcpy46&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 
 &lt;h1 id=&#34;implementation&#34;&gt;Implementation&lt;/h1&gt;
 
@@ -77,7 +252,7 @@ Following table gives a short summary of our design and goals achieved.&lt;/p&gt
 
 &lt;p&gt;For the simulation of CPU program, the given data files which contains
 the instructions were read into the instruction register of the CPU.The
-processor designed is a 5 stage pipeline design . The stages are
+processor designed is a 5 stage pipeline design. The stages are
 Instruction Fetch, Instruction decode,Execute,Memory Access and Write
 back.&lt;/p&gt;
 
@@ -438,7 +613,7 @@ path.&lt;/p&gt;
 &lt;p&gt;Comparison of Pipelined and Unpipelined&lt;/p&gt;
 
 &lt;p&gt;Following Timing report is obtained for a Clock period of 0.35 nS.
-&amp;ldquo;$$\therefore  Max_Frequency = \frac{1}{0.35 nS} = 2.86 GHz&amp;rdquo; .&lt;/p&gt;
+$$\therefore  Max_{frequency} = \frac{1}{0.35 nS} = 2.86 GHz$$ .&lt;/p&gt;
 
 &lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
 

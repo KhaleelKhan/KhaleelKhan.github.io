@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PyQt on Khaleel Khan&#39;s CV</title>
+    <link>https://khaleelkhan.com/tags/pyqt/</link>
+    <description>Recent content in PyQt on Khaleel Khan&#39;s CV</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Khaleel Khan &amp;copy; {year}; </copyright>
+    <lastBuildDate>Fri, 26 Oct 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://khaleelkhan.com/tags/pyqt/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Game of Cows and Bulls</title>
+      <link>https://khaleelkhan.com/project/cows-and-bulls/</link>
+      <pubDate>Fri, 26 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://khaleelkhan.com/project/cows-and-bulls/</guid>
+      <description>I wrote this python program as a solver for a game of cows and bulls which broke out between friends during a particularly boring train ride. The Wrapper GUI is written in PyQt and designed using QT designer. All processing is done in python.</description>
+    </item>
+    
+  </channel>
+</rss>

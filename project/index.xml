@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Khaleel Khan &amp;copy; {year}; </copyright>
-    <lastBuildDate>Wed, 26 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 26 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://khaleelkhan.com/project/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Game of Cows and Bulls</title>
+      <link>https://khaleelkhan.com/project/cows-and-bulls/</link>
+      <pubDate>Fri, 26 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://khaleelkhan.com/project/cows-and-bulls/</guid>
+      <description>I wrote this python program as a solver for a game of cows and bulls which broke out between friends during a particularly boring train ride. The Wrapper GUI is written in PyQt and designed using QT designer. All processing is done in python.</description>
+    </item>
     
     <item>
       <title>Khaleel&#39;s Master Thesis</title>
