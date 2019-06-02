@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.3.1">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Khaleelulla Khan">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="The purpose of this lab is to implement a THUMB processor with multiple pipeline stages that executes the given C-programs assembled for the ARM THUMB instruction set in Verilog. This processor features a 5 stage pipeline,hazard detection and dataforwarding.The CPU runs at a maximum frequency of 2.857 GHz.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://khaleelkhan.com/project/microprocessor-design-in-verilog/">
+
+  
+
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#3f51b5">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono">
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.min.80c1ccb0d4e2daa581fcfdea34748234.css">
+
+  
+
+  
+  
+  
+
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://khaleelkhan.com/project/microprocessor-design-in-verilog/">
+
+  
+  
+  
+  
+    
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Khaleel Khan&#39;s CV">
+  <meta property="og:url" content="https://khaleelkhan.com/project/microprocessor-design-in-verilog/">
+  <meta property="og:title" content="Microprocessor Design in Verilog | Khaleel Khan&#39;s CV">
+  <meta property="og:description" content="The purpose of this lab is to implement a THUMB processor with multiple pipeline stages that executes the given C-programs assembled for the ARM THUMB instruction set in Verilog. This processor features a 5 stage pipeline,hazard detection and dataforwarding.The CPU runs at a maximum frequency of 2.857 GHz."><meta property="og:image" content="https://khaleelkhan.com/project/microprocessor-design-in-verilog/featured.jpg">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2017-04-27T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2019-06-02T18:33:52&#43;02:00">
+  
+
+  
+
+  
+
+  <title>Microprocessor Design in Verilog | Khaleel Khan&#39;s CV</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Khaleel Khan&#39;s CV</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#competencies">
+            
+            <span>Competencies</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#experience">
+            
+            <span>Experience</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+            
+            <span>Downloads</span>
+            
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            
+            <li class="dropdown-item my-0 py-0 mx-0 px-0">
+              <a href="/files/CV_Khan_Nazeer_detailed.pdf">
+                
+                <span>Detailed CV</span>
+                
+              </a>
+            </li>
+            
+            <li class="dropdown-item my-0 py-0 mx-0 px-0">
+              <a href="/files/CV_Khan_Nazeer_overview.pdf">
+                
+                <span>Overview CV</span>
+                
+              </a>
+            </li>
+            
+            <li class="dropdown-item my-0 py-0 mx-0 px-0">
+              <a href="/files/CV_Khan_Nazeer_text.txt">
+                
+                <span>Text CV</span>
+                
+              </a>
+            </li>
+            
+          </ul>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article article-project" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="article-header d-xl-none">
+  <div class="featured-image" style="background-image: url('/project/microprocessor-design-in-verilog/featured_hu3d03a01dcc18bc5be0e67db3d8d209a6_224363_800x0_resize_q90_lanczos.jpg');"></div>
+  <span class="article-header-caption">Photo by rawpixel on Unsplash</span>
+</div>
+
+
+<div class="container-fluid split-header d-none d-xl-block">
+  <div class="row">
+    <div class="col-6">
+      <div class="split-header-content">
+        <h1 itemprop="name">Microprocessor Design in Verilog</h1>
+
+        
+
+        
+
+
+
+<meta content="2017-04-27 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2019-06-02 18:33:52 &#43;0200 CEST" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    <time>Jun 2, 2019</time>
+  </span>
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+</div>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  
+  
+    
+  
+  <a class="btn btn-outline-primary my-1 mr-1" href="https://twitter.com/itsmekhallu" target="_blank" rel="noopener">
+    <i class="fab fa-twitter mr-1"></i>
+    Follow
+  </a>
+
+
+</div>
+
+
+
+        
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Microprocessor%20Design%20in%20Verilog&amp;url=https%3a%2f%2fkhaleelkhan.com%2fproject%2fmicroprocessor-design-in-verilog%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fkhaleelkhan.com%2fproject%2fmicroprocessor-design-in-verilog%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fkhaleelkhan.com%2fproject%2fmicroprocessor-design-in-verilog%2f&amp;title=Microprocessor%20Design%20in%20Verilog"
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fkhaleelkhan.com%2fproject%2fmicroprocessor-design-in-verilog%2f&amp;title=Microprocessor%20Design%20in%20Verilog"
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Microprocessor%20Design%20in%20Verilog&amp;body=https%3a%2f%2fkhaleelkhan.com%2fproject%2fmicroprocessor-design-in-verilog%2f">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="split-header-image">
+        <img src="/project/microprocessor-design-in-verilog/featured_hu3d03a01dcc18bc5be0e67db3d8d209a6_224363_680x500_fill_q90_lanczos_smart1.jpg" itemprop="image" alt="">
+        <span class="article-header-caption">Photo by rawpixel on Unsplash</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="article-container d-xl-none">
+  <h1 itemprop="name">Microprocessor Design in Verilog</h1>
+
+  
+
+  
+
+
+
+<meta content="2017-04-27 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2019-06-02 18:33:52 &#43;0200 CEST" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    <time>Jun 2, 2019</time>
+  </span>
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=&amp;url="
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u="
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=&amp;title="
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=&amp;title="
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=&amp;body=">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  
+  
+    
+  
+  <a class="btn btn-outline-primary my-1 mr-1" href="https://twitter.com/itsmekhallu" target="_blank" rel="noopener">
+    <i class="fab fa-twitter mr-1"></i>
+    Follow
+  </a>
+
+
+</div>
+
+
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<h1 id="introduction">Introduction</h1>
+
+<h2 id="motivation">Motivation</h2>
+
+<p>The purpose of this lab is to implement a THUMB processor with multiple pipeline stages that executes the given C-programs assembled for the ARM THUMB instruction set in Verilog.Appropriate attention is taken to reduce the clock cycles for lower instruction latency.The features of this processor are 5 stage pipeline,hazard detection and data
+forwarding.The processor is designed such a way that the CPU runs at a
+maximum frequency of 2.857 GHz.</p>
+
+<h2 id="project-summary">Project Summary</h2>
+
+<p>Major milestones defined as per the project have been completed.
+Following table gives a short summary of our design and goals achieved.</p>
+
+<p><strong>Feature</strong>            <strong>Value/Result</strong></p>
+
+<hr />
+
+<p>Number of Stages       5
+  Synthesizable          Yes
+  Max Frequency          2.857 GHz
+  Power                  2.0583 mW
+  Can process count32    Yes
+  Can process memcpy46   Yes</p>
+
+<h1 id="implementation">Implementation</h1>
+
+<h2 id="design">Design</h2>
+
+<p>For the simulation of CPU program, the given data files which contains
+the instructions were read into the instruction register of the CPU.The
+processor designed is a 5 stage pipeline design . The stages are
+Instruction Fetch, Instruction decode,Execute,Memory Access and Write
+back.</p>
+
+<p>The instruction fetch stage is where a program counter will pull the
+next instruction from the current location in to the program memory. In
+addition the program counter was updated with either the next
+instruction location sequentially or the instruction location as
+determined by a branch.</p>
+
+<p>The instruction decode stage the control unit determines the values for
+the control lines that must be set to process the instruction. The
+decoded register addresses are sent to the register file and the data in
+the resister is passed to the ALU inputs.</p>
+
+<p>The opcode that is been fetched is sent to the ALU for execution.If
+required,branch addresses are also calculated and the forwarding unit
+determines whether the output of the ALU or the memory unit should be
+forwarded to the ALU inputs.For this purpose a 2:1 Multiplexer is used.</p>
+
+<p>In the Write back stage, calculated values are written back to the
+specific registers or memory.</p>
+
+<p>The CPU also contains a hazard detection block to determine when a stall
+cycle must be added.This is enabled when the output of a previous load
+instruction is required for the current execution.The hazard detection
+block will also prohibit the program counter from updating it’s next
+calculated value.</p>
+
+<p>Forwarding unit monitors the output of ALU and system memory and
+determines whether this value has to be given as a ALU input.If the
+recently calculated value is needed in the current execution before it
+is written to the register file it will be sent to the appropriate ALU
+input.</p>
+
+
+
+
+<figure>
+
+<img src="Images/Figure5.png" />
+
+
+
+<figcaption data-pre="Figure " data-post=":" >
+  <h4>Source: <span>[@CDACpipe]</span></h4>
+  
+</figcaption>
+
+</figure>
+
+<h2 id="functional-description">Functional Description</h2>
+
+<h5 id="pipeline">Pipeline</h5>
+
+<p>The Pipelined model is an architecture which allows throughput of the
+processor to be increased dramatically by reusing the idle stages during
+processing of instructions.All the stages of a pipeline are executed in
+parallel with Registers inserted between the stages. This enables
+several operations to take place simultaneously, and the processing and
+memory systems to operate continuously[@TDMI_DS].The stages in the
+pipeline are instruction fetch, decode, execute and writeback.</p>
+
+<h3 id="instruction-fetch-stage">Instruction Fetch Stage</h3>
+
+<p>The instruction fetch stage is responsible for reading the instruction
+memory and sending the next instruction to the next stage in pipeline,or
+a stall if a branch has been detected in order to avoid incorrect
+execution. It consist of three components : instruction memory, program
+counter.</p>
+
+<h4 id="program-counter">Program Counter</h4>
+
+<p>The program counter is incremented by 2 after every instruction is
+executed. In cases where a jump is required the PC is modified directly
+by the output of ALU via a multiplexer.</p>
+
+<h3 id="instruction-decode-stage">Instruction Decode Stage</h3>
+
+<p>In decode stage the fetched instruction is decoded and it is responsible
+for assigning the different sections of instructions into their proper
+representation based on different instruction types.The decode stage
+consist of control unit, the hazard detection unit , the sign extender
+and the register file, and is responsible for connecting all these
+components together. It splits the instruction into various parts and
+feeds them into the corresponding components.Registers Rn and Rm are fed
+to the register file, the immediate data is fed to the sign extender,
+and the ALU opcodes and the function codes are sent to the control unit.
+The output of these corresponding components are clocked and then stored
+for next stage.The codes used in the decode section are listed in the
+table.</p>
+
+<table>
+<thead>
+<tr>
+<th><strong>Opcode</strong></th>
+<th><strong>Instruction or instruction class</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>00xxxx</td>
+<td>Shift (immediate), add, subtract, move, and compare</td>
+</tr>
+
+<tr>
+<td>010000</td>
+<td>Data-processing</td>
+</tr>
+
+<tr>
+<td>010001</td>
+<td>Special data instructions and branch and exchange</td>
+</tr>
+
+<tr>
+<td>01001x</td>
+<td>Load from Literal Pool, see LDR (literal)</td>
+</tr>
+
+<tr>
+<td>0101xx</td>
+<td>Load/store single data item</td>
+</tr>
+
+<tr>
+<td>10100x</td>
+<td>Generate PC-relative address</td>
+</tr>
+
+<tr>
+<td>10101x</td>
+<td>Generate SP-relative address, see ADD (SP plus immediate)</td>
+</tr>
+
+<tr>
+<td>1011xx</td>
+<td>Miscellaneous 16-bit instructions</td>
+</tr>
+
+<tr>
+<td>1101xx</td>
+<td>Conditional branch, and Supervisor Call</td>
+</tr>
+
+<tr>
+<td>11100x</td>
+<td>Unconditional Branch</td>
+</tr>
+</tbody>
+</table>
+
+<p>: Source: <span>[@arm_manual]</span></p>
+
+<h3 id="control-unit">Control Unit</h3>
+
+<p>Control is the hardware that tells the datapath what to do, in terms of
+switching, operation selection, data movement between ALU components
+[@Patterson].It takes the given opcode from the instruction and
+translate into individual instruction control lines needed for the
+remaining stages.All control signals can be set based on the opcode
+bits.</p>
+
+<h3 id="hazard-detection-and-forwarding-unit">Hazard Detection and Forwarding Unit</h3>
+
+<p>Hazard occurs when we read a value that was just written from memory,as
+the value wont be available for execution until the end of the memory
+stage. It introduces stall cycle by replacing control lines with zero
+and disabling the program counter from updating. When a branch is
+detected the hazard detection unit will allow the program counter to
+write, but will feed it the branch address instead of the next counted
+value.</p>
+
+<p>The forwarding unit is responsible for choosing what input is to be fed
+into the ALU.It takes the input from the decode stage ,the value that
+the ALU has fed to the write back stage as well as the register numbers
+corresponding to all of these and determines if there is any conflict
+exist.It will decide which of this values must be send to ALU.</p>
+
+<p><img src="Images/examle_of_hazard.jpg" alt="Source:
+&lt;span&gt;[@Patterson]&lt;/span&gt;" /></p>
+
+<p><img src="Images/example_of_stall_insertion.jpg" alt="Source:
+&lt;span&gt;[@Patterson]&lt;/span&gt;" /></p>
+
+<h3 id="sign-extender-and-shifter">Sign Extender and Shifter</h3>
+
+<p>The sign extender takes the immediate value and sign extends it if the
+current instruction is signed operation. It also has a shifted output
+for branch address calculation.</p>
+
+<h3 id="register-file">Register File</h3>
+
+<p>The data storage in the CPU is the register bank contained within the
+Instruction decode stage. This bank of registers is directly referenced
+from the ARM Thumb instructions and is designed to allow to access the
+data and avoid the use of much slower data memory.The registers are
+defined as being written in the negative edge of the clock and read in
+the positive edge.This is done to avoid hazards when one instruction is
+attempting to write to the register bank while the other is reading.</p>
+
+<h3 id="execute-stage">Execute Stage</h3>
+
+<p>The execute stage is responsible for performing the specified
+operations.The execute stage consist of ALU , branch determiner and the
+forwarding unit. It connects these components together so that the ALU
+processes the data properly given inputs chosen by the forwarding unit
+and will notify the decode stage if a branch is indeed to be taken.</p>
+
+<h5 id="alu">ALU</h5>
+
+<p>The ALU is responsible for performing the actual calculation specified
+by the instruction. It takes two 16 bit inputs and opcode from the
+decode block and gives a single 16 bit output along with the Program
+status registers.</p>
+
+<h5 id="branch-determiner">Branch Determiner</h5>
+
+<p>The Branch determiner is responsible for looking at the output of ALU ,
+and the type of instruction it is decoding and determining whether the
+system is to branch or not.</p>
+
+<p>For example in case of BLE (Branch if less than or equal) branch must be
+taken when if flags Z set, or N set and V clear, or N clear and V
+set.[@TDMI_DS]</p>
+
+<p>Implementation of forwarding block is shown in Figure.</p>
+
+<p><img src="Images/forwarding.jpg" alt="Source:
+&lt;span&gt;[@Patterson]&lt;/span&gt;" /></p>
+
+<h3 id="writeback-stage">Writeback Stage</h3>
+
+<p>The write back stage is responsible for writing the calculated value
+back to the proper register.It has input control lines that tells
+whether the instruction writes back the output of ALU to memory or not.</p>
+
+<h3 id="push-and-pop-instruction">Push and Pop Instruction</h3>
+
+<p>Pushing to stack and Popping data back from stack to registers is
+implemented as a FSM shown in the following Figure.</p>
+
+<p><img src="Images/fsm.pdf" alt="FSM for Push and Pop instructions" /></p>
+
+<h2 id="rtl-verification">RTL verification</h2>
+
+<p>Test benches are used to simulate design without the need of any
+physical hardware. The biggest benefit of this is that it inspects every
+signal that is in the design. The overall CPU block is responsible for
+tying all of the stages together as well as providing the access to the
+outside world that the test bench uses to load instruction memory and
+monitor the register bank for test verification.<br />
+The test bench for the CPU involved two different sections in order to
+allow the testing of the CPU block as shown in Figure [fig:testbench].
+The first section that was part of the test bench was the code that was
+responsible for loading the instruction memory within the CPU.This
+memory is what would run the instructions through the pipeline once the
+CPU was allowed to start. The instructions that were loaded included
+register based and immediate adds, subtracts (both signed and unsigned),
+reading and writing data memory, and a loop that would force the CPU to
+jump back to the start of instruction memory and execute those same
+instructions again[@MIPS_paper]. The different adds were important
+because each exercised different parts of the CPU including the data
+forwarding unit, multiple registers and different functions within the
+ALU itself.The jump instruction is important and also in that it
+exercised the branch detection unit, hazard detection unit as well as
+the ability of the instruction fetch stage to be able to jump to an
+address and continue execution with only the input of a single stall
+cycle.</p>
+
+<p><img src="Images/testbench-crop.pdf" alt="RTL Verification Block diagram" /></p>
+
+<h2 id="synthesis">Synthesis</h2>
+
+<p>A synthesis tool takes an RTL hardware description and standard cell
+library as input and produces a gate level netlist as output[@iitkgp].
+The resulting gate level list is completely a structural description
+with standard cells of the design.It is not necessary that the Verilog
+is functionally correct ,it must be written in such a way that it
+directs the synthesis tool to generate good hardware. Verilog are tied
+to particular clock cycles. The synthesized netlist exhibits the same
+clock-by-clock cycle behavior, allowing the RTL testbench to be easily
+re-used for gate-level simulation. Design Vision was used for
+synthesizing our designed processor.</p>
+
+<h1 id="unpipelined-processor">Unpipelined Processor</h1>
+
+<p>The motive for multi cycle implementation for THUMB processor is to
+improve the performance of Single cycle Thumb processor which executes
+all instructions in 1 cycle. The main problem in Single cycle processor
+is, as all instructions are executed concurrently in one cycle, the
+components cannot be used more than once in a cycle. To make this design
+more efficient, sharing of the component can be made possible by making
+it have multiple input and outputs selected by a multiplexer.The control
+signals for such multiplexers are decided using the finite state
+machine. The individual components are connected as per the figure.</p>
+
+<p><img src="Images/unpipelined_blk_diagram.png" alt="Unpipelined block diagram&lt;span
+data-label=&quot;fig:unpipe&quot;&gt;&lt;/span&gt;" /></p>
+
+<h1 id="evaluation">Evaluation</h1>
+
+<p>The comparison of the obtained specifications are listed in Table
+below. Features like power, Maximum operating frequency and
+processing time is better in un pipelined architecture compared to
+pipelined architecture. However the processing time is the basis for
+performance and throughput .An interesting aspect about the processing
+time achieved in pipelined and un pipelined stages is the that, though 5
+stage pipeline is used the execution time or the performance has not
+increased 5 folds as expected. This is the result of adding stalls in
+Hazard block. Hence the measure of performance is not just dependent on
+the number of pipelined stages but also the type of instructions
+executed and the frequency at which stalls are inserted in the data
+path.</p>
+
+<table>
+<thead>
+<tr>
+<th><strong>Feature</strong></th>
+<th><strong>Pipelined</strong></th>
+<th><strong>Un-Pipelined</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Area</td>
+<td>3783.4 units</td>
+<td>8649 units</td>
+</tr>
+
+<tr>
+<td>Power</td>
+<td>2.0583 mW</td>
+<td>2.1109 mW</td>
+</tr>
+
+<tr>
+<td>Critical time</td>
+<td>.35 nS</td>
+<td>.25 nS</td>
+</tr>
+
+<tr>
+<td>Maximum Frequency</td>
+<td>2.857 GHZ</td>
+<td>4 GHz</td>
+</tr>
+
+<tr>
+<td>Execution time</td>
+<td>2184956 pS</td>
+<td>337300 pS</td>
+</tr>
+</tbody>
+</table>
+
+<p>Comparison of Pipelined and Unpipelined</p>
+
+<p>Following Timing report is obtained for a Clock period of 0.35 nS.
+&ldquo;$$\therefore  Max_Frequency = \frac{1}{0.35 nS} = 2.86 GHz&rdquo; .</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>As a result of this work,Thumb processor with pipelined stages is
+implemented using Verilog Hardware description language and a throughput
+better than Unpipelined architecture is achieved.The design is
+synthesize-able and achieves the required goals of the project.</p>
+
+<h2 id="future-work">Future work</h2>
+
+<ul>
+<li><p>The processor performance can optimized by inserting stalls
+intelligently .</p></li>
+
+<li><p>Dynamic Branch prediction algorithm can be implemented inside the
+processor</p></li>
+
+<li><p>Gate level simulation needs further debugging</p></li>
+</ul>
+
+<h1 id="referrences">Referrences</h1>
+
+<p>This appendix documents the software tools used for this project.</p>
+
+<table>
+<thead>
+<tr>
+<th><strong>Tool</strong></th>
+<th><strong>Version</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ModelSim</td>
+<td>SE-64 10.3d</td>
+</tr>
+
+<tr>
+<td>Synopsis Design Vision</td>
+<td>2013.12-SP5-3</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><p>The Thumb instruction set,<br />
+<em><a href="http://apt.cs.manchester.ac.uk/ftp/pub/apt/peve/PEVE05/Slides/05_Thumb.pdf" target="_blank">http://apt.cs.manchester.ac.uk/ftp/pub/apt/peve/PEVE05/Slides/05_Thumb.pdf</a></em></p></li>
+
+<li><p>Pipelined Processor Design,04/25/07, Luke Harvey and Stephanie
+Spielbauer</p></li>
+
+<li><p>Addison Wesley - <em>ARM System-on-Chip Architecture</em>, 2Ed.pdf. .</p></li>
+
+<li><p>Organization of Computer Systems: Pipelining. [Online]. Available:
+<em><a href="https://www.cise.ufl.edu/ mssz/CompOrg/CDA-pipe.html" target="_blank">https://www.cise.ufl.edu/ mssz/CompOrg/CDA-pipe.html</a></em>. [Accessed:
+02-Aug-2017].</p></li>
+
+<li><p>Organization of Computer Systems: Processor &amp; Datapath.
+[Online]. Available:
+<em><a href="https://www.cise.ufl.edu/ mssz/CompOrg/CDA-proc.html" target="_blank">https://www.cise.ufl.edu/ mssz/CompOrg/CDA-proc.html</a></em>. [Accessed:
+01-Aug-2017].</p></li>
+
+<li><p>ARM Architecture Reference Manual ARMv7-A and ARMv7-R edition Errata
+markup Copyright 1996-1998, 2000, 2004-2011 ARM Limited.</p></li>
+
+<li><p>ARM7TDMI Data Sheet Copyright ARM Limited.</p></li>
+
+<li><p>Patterson, D.A. and J.L. Hennesey. Computer Organization and Design: The
+Hardware/Software Interface, Second Edition, San Francisco, CA: Morgan
+Kaufman (1998).</p></li>
+
+<li><p>Vhdl Implementation of A Mips-32 Pipeline Processor, Kirat Pal Singh,
+Shivani Parmar</p></li>
+
+<li><p>IIT Lab tutorial
+<a href="http://www.facweb.iitkgp.ernet.in/ isg/TESTING/SLIDES/Tutorial2b.pdf" target="_blank">http://www.facweb.iitkgp.ernet.in/ isg/TESTING/SLIDES/Tutorial2b.pdf</a></p></li>
+</ul>
+
+    </div>
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/verilog/">Verilog</a>
+  
+  <a class="badge badge-light" href="/tags/arm/">ARM</a>
+  
+  <a class="badge badge-light" href="/tags/pipelined-processor/">Pipelined Processor</a>
+  
+</div>
+
+
+    
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu9fcac0b1692b2a79a8b3de9e0cf26697_301627_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title" itemprop="name"><a href="/authors/admin/">Khaleelulla Khan</a></h5>
+      <h6 class="card-subtitle">M.Sc Information and Communication Engineering</h6>
+      <p class="card-text" itemprop="description">Seeking opportunities in field of electronics with focus on hands-on product development, test and debug.</p>
+      <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="/#contact" >
+              <i class="fas fa-envelope"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://twitter.com/itsmekhallu" target="_blank" rel="noopener">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://github.com/khaleelkhan" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://www.linkedin.com/in/khaleel-khan/" target="_blank" rel="noopener">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="/files/CV_Khan_Nazeer_overview.pdf" >
+              <i class="ai ai-cv"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+    
+
+  </div>
+</article>
+
+
+
+<div class="container">
+  <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    Khaleel Khan &copy; 2019; &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+</div>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.a634eb963f72ae9bd331e70f2b1bc2d8.js"></script>
+
+  </body>
+</html>
+

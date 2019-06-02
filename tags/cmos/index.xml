@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CMOS on Khaleel Khan&#39;s CV</title>
+    <link>https://khaleelkhan.com/tags/cmos/</link>
+    <description>Recent content in CMOS on Khaleel Khan&#39;s CV</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Khaleel Khan &amp;copy; {year}; </copyright>
+    <lastBuildDate>Wed, 26 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://khaleelkhan.com/tags/cmos/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Khaleel&#39;s Master Thesis</title>
+      <link>https://khaleelkhan.com/project/khaleels-master-thesis/</link>
+      <pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://khaleelkhan.com/project/khaleels-master-thesis/</guid>
+      <description>This thesis details the design and implementation of a digitally controllable sine wave oscillator which can generate frequencies in the range of 0.7 to 2.7 GHz with an output power of -20 dBm across 50 Ω load.</description>
+    </item>
+    
+  </channel>
+</rss>
