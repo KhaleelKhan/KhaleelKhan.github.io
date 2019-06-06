@@ -1,3 +1,13 @@
+Profile
+=======
+
+Seeking opportunities in field of electronics with focus on hands-on product development, test and
+debug. Visit khaleelkhan.com for more info.
+
+Gender : Male
+Age : 27
+Nationality : Indian
+
 Education
 =========
 
@@ -66,7 +76,8 @@ Achieved score of 1.0
 - Design layout for the circuit.
 - Gain knowledge of Analog and Mixed signal design flow.
 
-Aug 2017 Hardware Description language (HDL) Lab,
+Aug 2017
+Hardware Description language (HDL) Lab,
  Integrated Electronic Systems – TU Darmstadt.
 Achieved score of 1.7
 -  Use Verilog to model a 5 stage pipelined processor that is defined on ARM Thumb instruction set level.
@@ -75,3 +86,46 @@ Achieved score of 1.7
 -  Practice group work, documentation and presentation techniques.
 -  Apply course knowledge and use industry-grade tools, particularly: Modelsim (Mentor Graphics) and
 Design Compiler (Synopsys)
+
+Tools
+=====
+- Cadence Virtuoso , Modelsim
+- Git, Vim
+- Eclipse CDT, Qt Designer, PyQt
+- MATLAB, Octave
+- LabVIEW, KiCAD
+- MS Office, Libre Office
+
+Competencies
+============
+
+- Python, Perl, Verilog
+- C, Embedded C, Assembly
+- Silicon Validation
+- PCB Design and Debugging
+- Analog/Mixed Signal Design (CMOS)
+- Embedded Hardware Design
+- Microprocessor Architectures (ARM)
+- Ubuntu, Windows
+- LaTeX, XML
+- Microcontrollers ‐ MSP430, STM32
+- i2c, SPI, UART
+- Raspberry Pi, Arduino
+
+Languages
+=========
+
+- English
+- German
+- Hindi
+
+Contact
+=======
+
+Leuschnerstraße 43
+Ober-ramstadt, 64372
+
+Mobile: 	(+49) 176 344 23391 
+Email: 		tokhaleelkhan@gmail.com
+Linkedin:	www.linkedin.com/in/khaleel-khan/
+Website:	khaleelkhan.com
