@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Khaleel Khan &amp;copy; {year}; </copyright>
-    <lastBuildDate>Fri, 26 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 10 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://khaleelkhan.com/project/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Coverletter Creator</title>
+      <link>https://khaleelkhan.com/project/coverletter-creator/</link>
+      <pubDate>Mon, 10 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://khaleelkhan.com/project/coverletter-creator/</guid>
+      <description>Python application that can generate job application coverletters based on templates. PDF (using latex) or text can be compiled. Each project can also be saved for reference later or further editing. Visit github link for more details.</description>
+    </item>
     
     <item>
       <title>Game of Cows and Bulls</title>

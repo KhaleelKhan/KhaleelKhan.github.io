@@ -3,6 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://khaleelkhan.com/project/coverletter-creator/</loc>
+    <lastmod>2019-06-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://khaleelkhan.com/tags/gui/</loc>
+    <lastmod>2019-06-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://khaleelkhan.com/</loc>
+    <lastmod>2019-06-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://khaleelkhan.com/tags/latex/</loc>
+    <lastmod>2019-06-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://khaleelkhan.com/project/</loc>
+    <lastmod>2019-06-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://khaleelkhan.com/tags/python/</loc>
+    <lastmod>2019-06-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://khaleelkhan.com/tags/</loc>
+    <lastmod>2019-06-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://khaleelkhan.com/tags/algorithm/</loc>
     <lastmod>2019-06-02T23:22:43+02:00</lastmod>
     <priority>0</priority>
@@ -26,31 +67,7 @@
   </url>
   
   <url>
-    <loc>https://khaleelkhan.com/</loc>
-    <lastmod>2019-06-02T23:22:43+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://khaleelkhan.com/project/</loc>
-    <lastmod>2019-06-02T23:22:43+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://khaleelkhan.com/tags/pyqt/</loc>
-    <lastmod>2019-06-02T23:22:43+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://khaleelkhan.com/tags/python/</loc>
-    <lastmod>2019-06-02T23:22:43+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://khaleelkhan.com/tags/</loc>
     <lastmod>2019-06-02T23:22:43+02:00</lastmod>
     <priority>0</priority>
   </url>

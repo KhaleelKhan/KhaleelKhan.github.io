@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Python on Khaleel Khan&#39;s CV</title>
-    <link>https://khaleelkhan.com/tags/python/</link>
-    <description>Recent content in Python on Khaleel Khan&#39;s CV</description>
+    <title>Latex on Khaleel Khan&#39;s CV</title>
+    <link>https://khaleelkhan.com/tags/latex/</link>
+    <description>Recent content in Latex on Khaleel Khan&#39;s CV</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Khaleel Khan &amp;copy; {year}; </copyright>
     <lastBuildDate>Mon, 10 Jun 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://khaleelkhan.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://khaleelkhan.com/tags/latex/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,15 +19,6 @@
       
       <guid>https://khaleelkhan.com/project/coverletter-creator/</guid>
       <description>Python application that can generate job application coverletters based on templates. PDF (using latex) or text can be compiled. Each project can also be saved for reference later or further editing. Visit github link for more details.</description>
-    </item>
-    
-    <item>
-      <title>Game of Cows and Bulls</title>
-      <link>https://khaleelkhan.com/project/cows-and-bulls/</link>
-      <pubDate>Fri, 26 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://khaleelkhan.com/project/cows-and-bulls/</guid>
-      <description>I wrote this python program as a solver for a game of cows and bulls which broke out between friends during a particularly boring train ride. The Wrapper GUI is written in PyQt and designed using QT designer. All processing is done in python.</description>
     </item>
     
   </channel>
